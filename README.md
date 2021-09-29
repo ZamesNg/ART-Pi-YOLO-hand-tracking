@@ -1,29 +1,55 @@
-# 板载 Wi-Fi 例程
+# ART-PI手势识别
 
 ## 简介
 
-本例程为 WIFI 例程，使用 AP6212 来连接到网络。并实现了断电自动重连。如果对本例程想进一步了解可以阅读[设计思想](./docs/设计思想.md)。
+本项目基于 [Yolo-Fastest]()，进一步缩小网络，并部署到``ART-PI``上。通过TCP实现图像和信息的传输。具体可以参考WIFI 例程。
+系统的整体框图为：
+![system](./figures/system.png)
+
+效果：
+![running](./figures/running2.jpg)
+
 
 ## 硬件说明
 
-![wifi_hardware](./figures/wifi_hardware.png)
+使用OV2640作为摄像头，但是请注意购买的摄像头I2C需要有**上拉电阻**，ART-PI的模拟I2C没有上拉电阻，开启内部上拉也不好使。
+![hardware1](./figures/hardware1.jpg)
 
-AP6212是正基AMPAK推出的一款低功耗高性能的WiFi+BT4.2模块，该模块符合802.11b/g/n，其中WiFi功能采用SDIO接口，蓝牙采用UART/I2S/PCM接口，具有StationMode，SoftAP，P2P功能等。该芯片硬件电路连接方式如上图所示。
+下图为加了两个上拉电阻的OV2640。
+![hardware2](./figures/hardware2.jpg)
 
 ## 软件说明
 
-本例程仅实现了 WIFI 联网的功能，并支持重连，可以作为您开发其他网络相关应用的基础工程。
+本项目实现了摄像头数据的读取以及小型化yolo在ART-PI上的部署，可以作为您其他AI相关应用的基础工程。如有帮助请不要吝啬你的⭐star⭐！
 
 ## 运行
 ### 编译&下载
 
 编译完成后，将开发板的 ST-Link USB 口与 PC 机连接，然后将固件下载至开发板。
 
-### 运行效果
+### 运行板子程序
 
-![wifi_autoconnect](./figures/wifi_autoconnect.png)
+首先需要连接到wifi：
+
+```shell
+wifi join [ssid] [password]
+```
+
+然后开启``tcpserver``，板子就会在``[ip]:5000``这个端口上发送图片和相关推理信息:
+
+```shell
+tcpserver
+```
+
+### 上位机程序
+
+我不给
+
+### 运行效果
+![running](./figures/running.jpg)
 
 ## 注意事项
 
-1. AP6212 正常运行依赖 WIFI 固件，如果固件丢失，参考[WIFI固件下载手册](https://github.com/RT-Thread-Studio/sdk-bsp-stm32h750-realthread-artpi/blob/master/documents/UM5003-RT-Thread%20ART-Pi%20BT_WIFI%20%E6%A8%A1%E5%9D%97%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%89%8B%E5%86%8C.md)。
+偶尔 ``hard fault`` ，重启一下板子就好了。
 
+垃圾代码，**junk code dont read** 。

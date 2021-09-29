@@ -13,13 +13,18 @@
 #include "drv_common.h"
 
 #define LED_PIN GET_PIN(I, 8)
+#define JPEG_LINE_SIZE  (160 * 160)
 
+struct rt_event ov2640_event;
 extern void wlan_autoconnect_init(void);
+
+
 
 int main(void)
 {
     rt_uint32_t count = 1;
     rt_pin_mode(LED_PIN, PIN_MODE_OUTPUT);
+    rt_event_init(&ov2640_event, "ov2640", RT_IPC_FLAG_FIFO);
 
     /* init Wi-Fi auto connect feature */
     wlan_autoconnect_init();

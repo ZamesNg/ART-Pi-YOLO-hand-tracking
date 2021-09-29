@@ -361,5 +361,6 @@
 #define ART_PI_USING_OTA_LIB
 /* end of External Libraries */
 #define RT_STUDIO_BUILT_IN
+#define RT_AI_USE_CUBE
 
 #endif

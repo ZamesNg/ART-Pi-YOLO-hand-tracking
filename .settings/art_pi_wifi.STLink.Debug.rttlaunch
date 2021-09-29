@@ -58,8 +58,8 @@
 <stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.adapterName" value="ST-LINK"/>
 <booleanAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.doContinue" value="true"/>
 <stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.gdbServerDeviceName" value="STM32H750XB"/>
-<stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.gdbServerExecutable" value="${rtt_install_path}/repo/Extract/Debugger_Support_Packages/STMicroelectronics/ST-LINK_Debugger/1.2.0/ST-LINK_gdbserver.exe"/>
-<stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.stlinkGdbServer" value="${rtt_install_path}/repo/Extract/Debugger_Support_Packages/STMicroelectronics/ST-LINK_Debugger/1.2.0/tools\bin\STM32_Programmer_CLI.exe"/>
+<stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.gdbServerExecutable" value="${debugger_install_path}/${stlink_debugger_relative_path}/ST-LINK_gdbserver.exe"/>
+<stringAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.stlinkGdbServer" value="${debugger_install_path}/${stlink_debugger_relative_path}/tools/bin/STM32_Programmer_CLI.exe"/>
 <booleanAttribute key="org.rtthread.studio.debug.gdbjtag.stlink.useRemoteTarget" value="true"/>
 <stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
 </launchConfiguration>
